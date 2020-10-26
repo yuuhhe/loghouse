@@ -4,4 +4,4 @@ module ClickhouseTimeZonePatch
   end
 end
 
-Clickhouse::Connection::Query::ResultSet.send(:prepend, ClickhouseTimeZonePatch)
+#Clickhouse::Connection::Query::ResultSet.send(:prepend, ClickhouseTimeZonePatch)

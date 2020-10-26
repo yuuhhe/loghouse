@@ -43,7 +43,7 @@ module LogsTables
   end
 
   def round_time_to_partition(time)
-    Time.at(time.to_i / PARTITION_PERIOD.hours * PARTITION_PERIOD.hours).utc
+    Time.at(time.to_i / PARTITION_PERIOD.hours * PARTITION_PERIOD.hours)
   end
 
   def next_time_partition(time)

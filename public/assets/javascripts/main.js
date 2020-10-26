@@ -361,7 +361,8 @@ $(document).ready(function() {
   });
 
   $('.input-group.date').datetimepicker({
-    locale: 'ru',
+//    locale: 'ru',
+    format: 'YYYY-MM-DD HH:mm',
     keepInvalid: true,
     useStrict: true,
     keyBinds: $.extend({}, $.fn.datetimepicker.defaults.keyBinds, { t: null, enter: submitForm })

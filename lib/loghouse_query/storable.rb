@@ -47,7 +47,7 @@ class LoghouseQuery
           q.attributes[:position] = new_order.index(q.id)
         end
 
-        create_table!(true)
+        create_table!(force: true)
         all_queries.each(&:save!)
       end
 

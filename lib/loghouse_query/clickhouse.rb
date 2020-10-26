@@ -103,7 +103,7 @@ class LoghouseQuery
     end
 
     def to_clickhouse_time(time)
-      "toDateTime('#{time.utc.strftime('%Y-%m-%d %H:%M:%S')}')"
+      "toDateTime('#{time.strftime('%Y-%m-%d %H:%M:%S')}')"
     end
 
     def to_clickhouse_namespaces
@@ -125,7 +125,7 @@ class LoghouseQuery
       while dates.last < (to - 1.day)
         dates << (dates.last + 1.day)
       end
-      return "date in ('#{(dates.map { |element| element.utc.strftime('%Y-%m-%d') }).join("' , '")}')"
+      return "date in ('#{(dates.map { |element| element.strftime('%Y-%m-%d') }).join("' , '")}')"
     end
 
     def to_clickhouse_where(from = nil, to = nil)

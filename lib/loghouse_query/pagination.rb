@@ -6,8 +6,8 @@ class LoghouseQuery
     alias :limit :per_page
 
     def paginate(newer_than: nil, older_than: nil, per_page: nil)
-      @newer_than = Time.zone.parse(newer_than).utc if newer_than.present?
-      @older_than = Time.zone.parse(older_than).utc if older_than.present? && !@newer_than
+      @newer_than = Time.zone.parse(newer_than) if newer_than.present?
+      @older_than = Time.zone.parse(older_than) if older_than.present? && !@newer_than
       @per_page   = per_page.to_i if per_page.present?
 
       @per_page ||= DEFAULT_PER_PAGE

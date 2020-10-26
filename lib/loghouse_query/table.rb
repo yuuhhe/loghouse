@@ -59,30 +59,9 @@ class LoghouseQuery
       def create_table!(force: false, version: table_version)
         if table_exists?(version: version)
           return unless force
-
-          drop_table!(version: version)
         end
 
-        ::Clickhouse.connection.create_table(table_name(version)) do |t|
-          case version
-          when 0
-            t.fixed_string :id, 36
-            t.string       :name
-            t.array        :namespaces, 'String'
-            t.string       :query
-            t.string       :time_from
-            t.string       :time_to
-            t.uint8        :position
-            t.engine       "TinyLog"
-          when 1
-            t.fixed_string :id, 36
-            t.string       :name
-            t.array        :namespaces, 'String'
-            t.string       :query
-            t.uint8        :position
-            t.engine       "TinyLog"
-          end
-        end
+        ::Clickhouse.connection.execute("TRUNCATE TABLE #{table_name(version)}")
       end
 
       def drop_table!(version: table_version)
